@@ -11,3 +11,15 @@ class Jugador:
         self.__cuidadN = str(ciudadN)
         self.__pais = str(pais)
         self.__fechaN = str(fechaN)
+    
+    def __str__(self):
+        return ('Nombre: {} Dni: {} CiudadN: {} Pais: {} FechaN: {}'.format(self.__nombre,self.__dni,self.__cuidadN,self.__pais,self.__fechaN))
+    
+    def getNombre(self):
+        return self.__nombre
+    
+    def getDni(self):
+        return self.__dni
+    
+    def str(self):
+        return ('Nombre: {} Dni: {} CiudadN: {} Pais: {} FechaN: {}'.format(self.__nombre,self.__dni,self.__cuidadN,self.__pais,self.__fechaN))
