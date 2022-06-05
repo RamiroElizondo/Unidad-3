@@ -15,7 +15,7 @@ class Televisor(Artefacto):
         self.__conexionI = bool(conexion)
 
     def ImporteVentaT(self):
-        venta:float = self.__precio
+        venta:float = self.getPrecio()
         if self.__tipoDefinicion == "SD":
             venta = venta + (venta * 0.01)
         elif self.__tipoDefinicion == "HD":
@@ -26,3 +26,19 @@ class Televisor(Artefacto):
             venta = venta + (venta * 0.10)
         return venta
     
+    def toJson(self):
+        d = dict(
+            __class__ = self.__class__.__name__,
+            __atributos__ = dict(
+                marca = self.getMarca(),
+                modelo = self.getModelo(),
+                color = self.getColor(),
+                pais = self.getPais(),
+                precio = self.getPrecio(),
+                capacidadL = self.__tipoPantalla,
+                velocidad = self.__pulgadas,
+                cantidadP = self.__tipoDefinicion,
+                tipoC = self.__conexionI
+            )
+        )
+        return d

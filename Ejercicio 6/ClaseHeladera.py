@@ -13,10 +13,27 @@ class Heladera(Artefacto):
         self.__ciclica = bool(ciclica)
     
     def ImporteVentaH(self):
-        venta:float = self.__precio
+        venta:float = self.getPrecio()
         if self.__freezer == False:
             venta = venta + (venta * 0.01)
         elif self.__freezer == True:
             venta = venta + (venta * 0.05)
         if self.__ciclica == True:
             venta = venta + (venta * 0.10)
+        return venta
+
+    def toJson(self):
+        d = dict(
+            __class__ = self.__class__.__name__,
+            __atributos__ = dict(
+                marca = self.getMarca(),
+                modelo = self.getModelo(),
+                color = self.getColor(),
+                pais = self.getPais(),
+                precio = self.getPrecio(),
+                capacidadL = self.__capacidad,
+                velocidad = self.__freezer,
+                cantidadP = self.__ciclica
+            )
+        )
+        return d

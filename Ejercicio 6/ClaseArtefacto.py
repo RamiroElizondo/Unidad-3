@@ -11,3 +11,18 @@ class Artefacto:
         self.__color = str(color)
         self.__pais = str(pais)
         self.__precio = float(precio)
+    
+    def getMarca(self):
+        return self.__marca
+    
+    def getModelo(self):
+        return self.__modelo
+    
+    def getColor(self):
+        return self.__color
+
+    def getPais(self):
+        return self.__pais
+
+    def getPrecio(self):
+        return self.__precio
