@@ -1,5 +1,3 @@
-from ClaseArtefacto import Artefacto
-
 class Nodo:
     def __init__(self, val):
         self.data = val

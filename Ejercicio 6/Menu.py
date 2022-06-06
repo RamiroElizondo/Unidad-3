@@ -65,6 +65,7 @@ class Menu:
     def opcion3(self):
         posicion = int(input('Ingrese posicion: '))
         self.__lista.mostrarposicion(posicion)
+        self.__lista.mostrarLista()
 
     def opcion4(self):
         self.__lista.contar()
@@ -76,7 +77,7 @@ class Menu:
         self.__lista.mostrarDatosVenta()
     
     def opcion7(self):
-        self.__lista.GuardarJson()
+        self.__manejador.GuardarJson(self.__lista)
 
     def menuOpciones(self,opcion):
         if opcion == 1:

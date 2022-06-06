@@ -30,7 +30,14 @@ class ObjectEncoder:
                     televisor = Televisor(**atributos)
                     lista.agregarElemento(televisor)
 
-    def escribirJSON(self,archivo,datos):
-        with open(archivo,'w',encoding='utf8')as docjson:
-            json.dump(datos,docjson)
-        return True
+    def GuardarJson(self,listaNodo:ListaEnlazada):
+        ruta = "nuevosarchivo.json"
+        lista = []
+        actual = listaNodo.getComienzo()
+        while actual != None:
+            dato = actual.getDato()
+            dicc = dato.toJson()
+            lista.append(dicc)
+            actual = actual.getSiguiente()
+        with open(ruta, 'w') as archivo:
+            json.dump(lista,archivo,indent='\t')

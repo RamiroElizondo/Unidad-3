@@ -49,8 +49,8 @@ class ListaEnlazada:
         actual = self.__comienzo
         previo = None
         pos = 0
-        length = self.size()
-        while pos < length:
+        tamaño = self.size()
+        while pos < tamaño:
             previo = actual
             actual = actual.getSiguiente() #type: ignore
             pos += 1
@@ -61,14 +61,14 @@ class ListaEnlazada:
         else:
             previo.setSiguiente(nuevoNodo)
     
-    def printList(self):
-        """Print the list"""
+    def mostrarLista(self):
         actual = self.__comienzo
         while actual is not None:
             print(actual.getDato())
             actual = actual.getSiguiente()
     
     def mostrarposicion(self,pos:int):
+        pos = pos -1 
         actual = self.__comienzo
         indice = 0
         bandera = False
@@ -119,17 +119,8 @@ class ListaEnlazada:
             print('%s%22s%25.2f'%(actual.getDato().getMarca(),actual.getDato().getPais(),importeVenta))
             actual = actual.getSiguiente()
     
-    def GuardarJson(self):
-        ruta = "nuevosarchivo.json"
-        lista = []
-        actual = self.__comienzo
-        while actual != None:
-            dato = actual.getDato()
-            dicc = dato.toJson()
-            lista.append(dicc)
-            actual = actual.getSiguiente()
-        with open(ruta, 'w') as archivo:
-            json.dump(lista,archivo,indent='\t')
+    def getComienzo(self):
+        return self.__comienzo
     
     def __iter__(self):
         actual = self.__comienzo
