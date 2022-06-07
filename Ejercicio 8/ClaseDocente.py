@@ -4,6 +4,7 @@ class Docente(Personal):
     __carrera:str = ""
     __cargo:str = ""
     __catedra:str = ""
+    __porcentajeycargo:list=["",0.0]
 
     def __init__(self,datos:dict):
         super().__init__(datos)
@@ -17,19 +18,31 @@ class Docente(Personal):
     def getCargo(self):
         return self.__cargo
     
+    def setPorcentajeCargo(self,porcargo):
+        self.__porcentajeycargo = porcargo
+
     def getCatedra(self):
         return self.__catedra
 
     def sueldoDocente(self):
+        valor:float = 0.0
         sueldoD = self.getSueldoB()
-        porcentaje:float = 0.0
+        porcentaje: list[float] = [0.10,0.20,0.50]
+        if self.__porcentajeycargo[1] != 0.0:
+            if self.__porcentajeycargo[0] == 'Simple':
+                porcentaje[0] = self.__porcentajeycargo[1]
+            elif self.__porcentajeycargo[0] == 'Semiexclusivo':
+                porcentaje[1] = self.__porcentajeycargo[1]
+            elif self.__porcentajeycargo[0] == 'Exclusivo':
+                porcentaje[2] = self.__porcentajeycargo[1]
+        
         if self.__cargo == 'Simple':
-            porcentaje = 0.10
+            valor = sueldoD * porcentaje[0]
         elif self.__cargo == 'Semiexclusivo':
-            porcentaje = 0.20
+            valor = sueldoD * porcentaje[1]
         elif self.__cargo == 'Exclusivo':
-            porcentaje = 0.50
-        return self.SueloaCobrar() + (sueldoD*porcentaje)
+            valor = sueldoD * porcentaje[2]
+        return self.SueloaCobrar() + valor
 
     def toJson(self):
         d = dict(

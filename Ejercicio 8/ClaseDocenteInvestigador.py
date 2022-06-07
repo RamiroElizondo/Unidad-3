@@ -17,6 +17,9 @@ class DocenteInvestigador(Docente,Investigacion):
 
     def getExtra(self):
         return self.__importe
+    
+    def setExtra(self,nuevo:float):
+        self.__importe = nuevo
 
     def getCatetoria(self):
         return self.__categoria

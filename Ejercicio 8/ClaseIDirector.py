@@ -1,6 +1,6 @@
 from zope.interface import Interface
 
-class IDirector(Interface):
+class IDirector(Interface):#type: ignore
     def modificarBasico(self,dni,nuevoB):
         pass
 

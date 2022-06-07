@@ -18,8 +18,8 @@ class ListaEnlazada:
         nodo.setSiguiente(self.__comienzo)
         self.__comienzo = nodo
 
-    def getTamaño(self):
-        contador = 0
+    def getTamaño(self)->int:
+        contador:int = 0
         actual = self.__comienzo
         while actual != None:
             contador += 1

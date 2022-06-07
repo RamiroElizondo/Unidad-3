@@ -5,6 +5,9 @@ from ClaseDocente import Docente
 from ClaseInvestigador import Investigacion
 from ClaseDocenteInvestigador import DocenteInvestigador
 from ClasePersonalApoyo import PersonalApoyo
+from ManejadorDirector import ManejadorDirector
+from ManejadorTesorero import ManejadorTesorero
+
 
 class Menu:
     __lista: ListaEnlazada
@@ -26,6 +29,7 @@ class Menu:
         print('6- Generar Listado Ordenado de todos los Agentes')
         print('7- Listado de todos los Docentes Investigadores')
         print('8- Almacenar Agentes en JSON')
+        print('9- Autenticar Agente')
 
     def crearAgente(self):
         objeto=None
@@ -133,6 +137,13 @@ class Menu:
     def opcion8(self):
         self.__manejador.guardarJson(self.__lista)
     
+    def opcion9(self):
+        userPass = input('Ingrese el usuario y la contraseña: ')
+        if userPass ==  "uTesoreso/ag@74ck":
+            ManejadorTesorero(self.__lista)
+        elif userPass == "uDirector/ufC77#!1":
+            ManejadorDirector(self.__lista)
+
     def menuOpciones(self,opcion):
         if opcion == 1:
             self.opcion1()
@@ -150,5 +161,7 @@ class Menu:
             self.opcion7()
         elif opcion == 8:
             self.opcion8()
+        elif opcion == 9:
+            self.opcion9()
         else:
             print('Opcion no valida')

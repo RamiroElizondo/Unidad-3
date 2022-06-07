@@ -18,6 +18,8 @@ class Personal:
     def getApellido(self):
         return self.__apellido
 
+    def setSueldoB(self,nuevo):
+        self.__sueldoB = nuevo
     def getSueldoB(self):
         return self.__sueldoB
 
